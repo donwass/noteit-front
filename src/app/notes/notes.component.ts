@@ -15,16 +15,10 @@ export class NotesComponent implements OnInit {
   ngOnInit() {
     this.getAllNotebooks()
   }
-
-  public getAllNotebooks() {
-
+  public getAllNotebooks(){
     this.apiService.getAllNotebooks().subscribe(
-      res => {
-        this.notebooks = res;
-      },
-      error => {
-        alert("error");
-      },
+      res => {this.notebooks = res;},
+      error => {alert("error");},
     );
   }
 
