@@ -9,6 +9,7 @@
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
+    "tslint.autoFixOnSave": true,
     "directive-selector": [
       true,
       "attribute",

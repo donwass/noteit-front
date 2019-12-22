@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Notebook} from "./model/notebook";
-import {ApiService} from "../shared/api.service";
+import {Notebook} from './model/notebook';
+import {ApiService} from '../shared/api.service';
 
 @Component({
   selector: 'app-notes',
@@ -10,27 +9,63 @@ import {ApiService} from "../shared/api.service";
 })
 export class NotesComponent implements OnInit {
   notebooks: Notebook[] = [];
-  constructor(private apiService: ApiService) { }
+
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit() {
-    this.getAllNotebooks()
+    this.getAllNotebooks();
   }
-  public getAllNotebooks(){this.apiService.getAllNotebooks().subscribe(
-      res => {this.notebooks = res;},
-      error => {alert("error");},
+
+  public getAllNotebooks() {
+    this.apiService.getAllNotebooks().subscribe(
+      res => {
+        this.notebooks = res;
+        console.log(this.notebooks);
+      },
+      error => {
+        alert('error');
+      },
     );
   }
 
   createNotebook() {
-    let newNotebook:Notebook = {
-      name:"New notebook",
-      id:null,
+    const newNotebook: Notebook = {
+      name: 'New notebook',
+      id: null,
       nbOfNotes: 0
-    }
+    };
     this.apiService.postNotebook(newNotebook).subscribe(
-      res => {newNotebook.id = res.id
-      this.notebooks.push(newNotebook);},
-      error => {alert("error");},
+      res => {
+        newNotebook.id = res.id;
+        this.notebooks.push(newNotebook);
+      },
+      error => {
+        alert('error');
+      },
     );
+  }
+
+  updatedNotebook(updatedNotebook: Notebook) {
+    this.apiService.postNotebook(updatedNotebook).subscribe(
+      res => {
+      },
+      error => {
+        alert('error');
+      },
+    );
+  }
+
+  deleteNotebook(notebook: Notebook) {
+    if (confirm('r u sure')) {
+      this.apiService.deleteNotebook(notebook.id).subscribe(
+        res => {},
+        err => {
+          console.log(err.toString());
+          alert('An error has occurred while deleting the notebook');
+        }
+      );
+    }
+
   }
 }
