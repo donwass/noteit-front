@@ -15,10 +15,17 @@ export class ApiService {
   private SEND_FEEDBACK_URL = `${this.BASE_URL}//feedback`;
   private SAVE_UPDATE_NOTEBOOK = `${this.BASE_URL}//notebooks`;
   private DELETE_NOTEBOOK_URL = `${this.BASE_URL}//notebooks//`;
+  private ALL_NOTES_URL = `${this.BASE_URL}//notes//all`;
+  private NOTES_BY_NOTEBOOK_URL = `${this.BASE_URL}//notes//byNotebook`;
+  private DELETE_NOTE_URL = `${this.BASE_URL}//notes//`;
   Obser;
 
   getAllNotebooks(): Observable<Notebook[]> {
     return this.http.get<Notebook[]>(this.ALL_NOTEBOOKS_URL);
+  }
+
+  getAllNotes(): Observable<Note[]>{
+    return this.http.get<Note[]>(this.ALL_NOTES_URL);
   }
 
   postFeedback(feedback: FeedbackViewModel): Observable<any> {
@@ -31,5 +38,11 @@ export class ApiService {
 
   deleteNotebook(id: string): Observable<any> {
     return this.http.delete(this.DELETE_NOTEBOOK_URL + id);
+  }
+  getAllByNotebookId(notebookId: string): Observable<Note[]>{
+    return this.http.get<Note[]>(this.NOTES_BY_NOTEBOOK_URL + notebookId);
+  }
+  deleteNote(id: string): Observable<any>{
+    return this.http.delete(this.DELETE_NOTE_URL + id);
   }
 }

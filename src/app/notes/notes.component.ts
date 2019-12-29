@@ -8,13 +8,15 @@ import {ApiService} from '../shared/api.service';
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-  notebooks: Notebook[] = [];
 
   constructor(private apiService: ApiService) {
   }
+  notebooks: Notebook[] = [];
+  notes: Note[] = [];
 
   ngOnInit() {
     this.getAllNotebooks();
+    this.getAllNotes();
   }
 
   public getAllNotebooks() {
@@ -67,5 +69,24 @@ export class NotesComponent implements OnInit {
       );
     }
 
+  }
+  getAllNotes(){
+      this.apiService.getAllNotes().subscribe(
+        res => {
+          this.notes = res;
+        },
+        err => {
+          console.log(err.toString());
+          alert('An error has occurred while deleting the notebook');
+        }
+      );
+  }
+
+  deleteNote(note: Note) {
+    this.apiService.deleteNote(note.id).subscribe(res => {},
+      err => {
+        console.log(err.toString());
+        alert('An error has occurred while deleting the note');
+      })
   }
 }
