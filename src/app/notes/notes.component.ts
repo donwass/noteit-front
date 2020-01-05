@@ -102,7 +102,8 @@ export class NotesComponent implements OnInit {
       text: "Write some text in here",
       lastModifiedOn: null,
       notebookId: notebookId
-    }
+    };
+
     this.apiService.saveNote(newNote).subscribe(
       res => {
         newNote.id = res.id;

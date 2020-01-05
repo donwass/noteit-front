@@ -11,14 +11,14 @@ export class ApiService {
   }
 
   private BASE_URL = 'http://localhost:8080/api';
-  private ALL_NOTEBOOKS_URL = `${this.BASE_URL}//notebooks//all`;
-  private SEND_FEEDBACK_URL = `${this.BASE_URL}//feedback`;
-  private SAVE_UPDATE_NOTEBOOK = `${this.BASE_URL}//notebooks`;
-  private DELETE_NOTEBOOK_URL = `${this.BASE_URL}//notebooks//`;
-  private ALL_NOTES_URL = `${this.BASE_URL}//notes//all`;
-  private NOTES_BY_NOTEBOOK_URL = `${this.BASE_URL}//notes//byNotebook`;
-  private DELETE_NOTE_URL = `${this.BASE_URL}//notes//`;
-  private SAVE_UPDATE_NOTE_URL = `${this.BASE_URL}/notes`;
+  private ALL_NOTEBOOKS_URL = `${this.BASE_URL}\\notebooks\\all`;
+  private SEND_FEEDBACK_URL = `${this.BASE_URL}\\feedback`;
+  private SAVE_UPDATE_NOTEBOOK = `${this.BASE_URL}\\notebooks`;
+  private DELETE_NOTEBOOK_URL = `${this.BASE_URL}\\notebooks\\`;
+  private ALL_NOTES_URL = `${this.BASE_URL}\\notes\\all`;
+  private NOTES_BY_NOTEBOOK_URL = `${this.BASE_URL}\\notes\\byNotebook\\`;
+  private DELETE_NOTE_URL = `${this.BASE_URL}\\notes\\`;
+  private SAVE_UPDATE_NOTE_URL = `${this.BASE_URL}\\notes\\`;
 
   getAllNotebooks(): Observable<Notebook[]> {
     return this.http.get<Notebook[]>(this.ALL_NOTEBOOKS_URL);
