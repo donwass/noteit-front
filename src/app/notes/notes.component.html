@@ -55,7 +55,7 @@
       </div>
       <div class="row">
         <!-- Note list -->
-        <app-note *ngFor="let note of notes"></app-note>
+        <app-note *ngFor="let n of notes"[note]="n"></app-note>
       </div>
     </div>
   </div>
