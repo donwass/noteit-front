@@ -1,3 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(~bootstrap/dist/css/bootstrap.min.css);
 @import url(~font-awesome/css/font-awesome.min.css);
+.list-group-item{
+  cursor: pointer;
+}
+.input-label{
+  background:rgba(0,0,0,0);
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.input-label-underline{
+  position: absolute;
+  left: 17.5%;
+  top: 90%;
+  width: 0%;
+  height: 1px;
+  background-color: #000;
+}
+.input-label:focus ~ .input-label-underline{
+  width: 50%;
+  height: 1px;
+  transition: .2s ease-in-out;
+}
+.input-label:not(:focus) ~ .input-label-underline{
+  width: 0%;
+  transition: .25s;
+}
+.input-label-lg{
+  background:rgba(0,0,0,0);
+  border: none;
+  cursor: pointer;
+}
+.del_nb_btn{
+  background-color:#FF4C4C;
+  position: absolute;
+  height: calc(100% + 1px);
+  top:calc(0% - 1px);
+  padding: 13px;
+}
+.del_ic{
+  color: #000;
+  font-weight: lighter;
+}

@@ -53,6 +53,7 @@ export class NotesComponent implements OnInit {
   updatedNotebook(updatedNotebook: Notebook) {
     this.apiService.postNotebook(updatedNotebook).subscribe(
       res => {
+
       },
       error => {
         alert('error');
@@ -61,16 +62,17 @@ export class NotesComponent implements OnInit {
   }
 
   deleteNotebook(notebook: Notebook) {
-    if (confirm('r u sure')) {
+
       this.apiService.deleteNotebook(notebook.id).subscribe(
         res => {
+
         },
         err => {
           console.log(err.toString());
           alert('An error has occurred while deleting the notebook');
         }
       );
-    }
+
 
   }
 
@@ -87,12 +89,17 @@ export class NotesComponent implements OnInit {
   }
 
   deleteNote(note: Note) {
-    this.apiService.deleteNote(note.id).subscribe(res => {
-      },
-      err => {
-        console.log(err.toString());
-        alert('An error has occurred while deleting the note');
-      })
+
+      this.apiService.deleteNote(note.id).subscribe(
+        res => {let indexOfNotes = this.notes.indexOf(note);
+        this.notes.splice(indexOfNotes, 1);
+
+        },
+        err => {
+          console.log(err.toString());
+          alert('An error has occurred while deleting the note');
+        })
+
   }
 
   createNote(notebookId: string) {
