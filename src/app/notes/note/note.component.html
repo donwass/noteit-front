@@ -18,6 +18,6 @@
     (change)="updateNote()"
     class="input-label"
     style="=width: 100%;" rows="6"></textarea>
-  <strong class="text-info" style="font-size: small"></strong>
+  <strong class="text-info" style="font-size: small">{{note.lastModifiedOn | date:'dd-MM HH-mm'}}</strong>
 </div>
 </div>

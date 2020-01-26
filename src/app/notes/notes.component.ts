@@ -90,15 +90,7 @@ export class NotesComponent implements OnInit {
 
   deleteNote(note: Note) {
 
-      this.apiService.deleteNote(note.id).subscribe(
-        res => {let indexOfNotes = this.notes.indexOf(note);
-        this.notes.splice(indexOfNotes, 1);
 
-        },
-        err => {
-          console.log(err.toString());
-          alert('An error has occurred while deleting the note');
-        })
 
   }
 
