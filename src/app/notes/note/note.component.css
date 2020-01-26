@@ -1,0 +1,14 @@
+textarea{
+  resize: none;
+}
+textarea::-webkit-scrollbar-thumb{
+  border-width:1px 1px 1px 2px;
+  border-color: #777;
+  background-color: #aaa;
+}
+textarea::-webkit-scrollbar-track{
+  border-width:0;
+}
+.card-body{
+  width: 250px;
+}

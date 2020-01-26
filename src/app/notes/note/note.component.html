@@ -14,10 +14,12 @@
   </div>
   <!-- text -->
   <textarea
+
     [(ngModel)]="note.text"
     (change)="updateNote()"
     class="input-label"
     style="=width: 100%;" rows="6"></textarea>
-  <strong class="text-info" style="font-size: small">{{note.lastModifiedOn | date:'dd-MM HH-mm'}}</strong>
+  <br>
+  <strong class="text-info" style="font-size: small">{{note.lastModifiedOn | date:'dd MMM HH:mm:ss'}}</strong>
 </div>
 </div>

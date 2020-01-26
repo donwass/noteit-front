@@ -15,6 +15,7 @@ export class NotesComponent implements OnInit {
   notebooks: Notebook[] = [];
   notes: Note[] = [];
   selectedNotebook: Notebook;
+  searchText: string;
 
   ngOnInit() {
     this.getAllNotebooks();
@@ -88,10 +89,16 @@ export class NotesComponent implements OnInit {
     );
   }
 
-  deleteNote(note: Note) {
-
-
-
+  deleteNote(note: Note){
+    if(confirm("Are you sure you want to delete this note?")){
+      this.apiService.deleteNote(note.id).subscribe(
+        res =>{
+          let indexOfNote = this.notes.indexOf(note);
+          this.notes.splice(indexOfNote, 1);
+        },
+        err=>{alert("An error has occurred deleting the note");}
+      );
+    }
   }
 
   createNote(notebookId: string) {
